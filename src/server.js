@@ -20,14 +20,14 @@ conexionDB();
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: 'https://trabajo-wp.vercel.app',  // Cambia al puerto correcto de tu frontend
+  origin: '*',  // Cambia al puerto correcto de tu frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
   credentials: true,
   preflightContinue: false,
   optionsSuccessStatus: 204,
 };
-
+app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
