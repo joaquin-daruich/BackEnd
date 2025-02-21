@@ -5,16 +5,19 @@ import { controladorDeRegistro } from './controladores/controladorDeRegistro.js'
 
 const app = express();
 
+
 app.use(express.json({ limit: '0.2mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: '*',  
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
+    origin: '*',  
+    methods: ['GET', 'POST', 'OPTIONS'], 
+    allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],  
+  };
+  
+  app.use(cors(corsOptions)); 
+  app.options('*', cors(corsOptions));
 
-app.use(cors(corsOptions)); 
 
 const PUERTO = 7000;
 
