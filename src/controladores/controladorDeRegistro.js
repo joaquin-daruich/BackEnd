@@ -6,7 +6,7 @@ export const controladorDeRegistro = async (req, res) => {
     
 
     try {
-        await conexionDB()
+       conexionDB()
     const { email, contraseña } = req.body;
     if(!email || !contraseña){
         console.log(email)
