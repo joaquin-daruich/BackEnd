@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { controladorDeRegistro } from './controladores/controladorDeRegistro.js';
-import  ENVIROMENT  from './configuraciones/enviroment.js';
+import ENVIROMENT from './configuraciones/enviroment.js';
 
 const app = express();
 app.use(express.json());
@@ -14,15 +14,18 @@ const conexionDB = async () => {
     } catch (error) {
       console.error('Error al conectar con la base de datos:', error);
     }
-  };
-  conexionDB();
+};
+conexionDB();
+
 app.use(express.urlencoded({ extended: true }));
-app.use(  cors({
-    origin: ENVIROMENT.URL_FRONTEND
-})
-)
 
+const corsOptions = {
+    origin: 'https://trabajo-wp.vercel.app', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
 
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.send('holaaa');
@@ -30,6 +33,9 @@ app.get('/', (req, res) => {
 
 app.post('/registrarse', controladorDeRegistro);
 
-app.listen(ENVIROMENT.URL_FRONTEND, () => {
-  console.log('puertoFuncionando en ' + ENVIROMENT.URL_FRONTEND);
+
+const puerto = process.env.PORT || 7000;  
+
+app.listen(puerto, () => {
+  console.log(`Servidor funcionando en http://localhost:${puerto}`);
 });
