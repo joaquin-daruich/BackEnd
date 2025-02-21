@@ -21,9 +21,9 @@ const corsOptions = {
   
   app.use(cors(corsOptions));  
   
-  app.post('/prueba', (req, res) => {
-    console.log('funciona dicen');
-    res.json('Solicitud recibida');
+  app.post('/registrarse', (req, res) => {
+   
+    res.json(req.body);
   });
 
 app.use('/api/status' , statusRouter)
