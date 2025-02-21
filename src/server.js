@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { controladorDeRegistro } from './controladores/controladorDeRegistro.js';
+import { ENVIROMENT } from '../enviroment.js';
 
 const app = express();
 app.use(express.json());
@@ -15,13 +16,10 @@ const conexionDB = async () => {
   };
   conexionDB();
 app.use(express.urlencoded({ extended: true }));
-const corsOptions = {
-    origin: '*',  
-    methods: ['GET', 'POST', 'OPTIONS'], 
-    allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],  
-  };
-  
-  app.use(cors(corsOptions)); 
+app.use(  cors({
+    origin: ENVIROMENT.URL_FRONTEND
+})
+)
 
 
 const PUERTO = process.env.PORT || 7000;
