@@ -5,7 +5,7 @@ import { controladorDeRegistro } from './controladores/controladorDeRegistro.js'
 
 const app = express();
 app.use(express.json());
-const conexionDB = async () => {
+export const conexionDB = async () => {
   try {
     await mongoose.connect('mongodb+srv://lemat:lemat2213@cluster0.xu4py.mongodb.net/trabajo-wp', {
       useNewUrlParser: true,

@@ -1,10 +1,12 @@
 import bcrypt from 'bcrypt'
 import modeloDeUsuario from '../modelos/modeloDeUsuario.js'
+import { conexionDB } from '../server.js';
 
 export const controladorDeRegistro = async (req, res) => {
     
 
     try {
+        await conexionDB()
     const { email, contraseña } = req.body;
     if(!email || !contraseña){
         console.log(email)
