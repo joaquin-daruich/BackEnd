@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 app.post('/registrarse', (req, res) => {
   const datosDelUsuario = {
     email: req.body.email,
-    contraseña: req.body.password,
+    contraseña: req.body.contraseña,
   };
   res.json(datosDelUsuario);  // Respuesta en formato JSON
 });
