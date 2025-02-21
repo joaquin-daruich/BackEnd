@@ -6,11 +6,7 @@ import  ENVIROMENT  from './configuraciones/enviroment.js';
 
 const app = express();
 app.use(express.json());
-app.use(cors({
-    origin: 'http://localhost:5173', // Permite solicitudes desde el frontend (puedes agregar más dominios si es necesario)
-    methods: ['GET', 'POST'], // Métodos permitidos
-    allowedHeaders: ['Content-Type'], // Encabezados permitidos
-  }));
+
 const conexionDB = async () => {
     try {
       await mongoose.connect('mongodb+srv://lemat:lemat2213@cluster0.xu4py.mongodb.net/trabajo-wp');
