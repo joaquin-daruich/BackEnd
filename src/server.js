@@ -29,7 +29,6 @@ const corsOptions = {
     res.json(datosDelUsuario);
   });
 
-app.use('/api/status' , statusRouter)
 app.listen( PUERTO, () => {
     console.log('holaaa')
 } )
