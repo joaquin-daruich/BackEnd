@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt'
 import modeloDeUsuario from '../modelos/modeloDeUsuario.js'
 import mongoose from 'mongoose';
 import cors from 'cors';
+import express from 'express'
 
  const conexionDB = async () => {
  
@@ -17,6 +18,7 @@ import cors from 'cors';
 };
 
 
+const app = express();
 
 export const controladorDeRegistro = async (req, res) => {
     
