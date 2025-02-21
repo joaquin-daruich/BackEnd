@@ -23,7 +23,7 @@ const corsOptions = {
   
   app.post('/prueba', (req, res) => {
     console.log('funciona dicen');
-    res.send('Solicitud recibida');
+    res.json('Solicitud recibida');
   });
 
 app.use('/api/status' , statusRouter)
