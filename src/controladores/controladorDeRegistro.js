@@ -20,7 +20,7 @@ export const controladorDeRegistro = async (req, res) => {
     try {
 
         
-        console.log('medio trol')
+        console.log('medio trol prueba 2 funciona o no')
     const { email, password } = req.body;
    console.log(req.body)
     if(!email || !password){
