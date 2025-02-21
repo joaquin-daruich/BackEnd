@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import { controladorDeRegistro } from './controladores/controladorDeRegistro';
+import { controladorDeRegistro } from './controladores/controladorDeRegistro.js';
 
 const app = express();
 
