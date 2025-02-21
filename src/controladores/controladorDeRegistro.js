@@ -2,8 +2,14 @@ import bcrypt from 'bcrypt'
 import modeloDeUsuario from '../modelos/modeloDeUsuario.js'
 
 export const controladorDeRegistro = async (req, res) => {
-    const { email, contraseña } = req.body;
     try {
+    const { email, contraseña } = req.body;
+    if(!email){
+        res.render('no reconoce email!')
+    }
+    if(!contraseña){
+        res.render('no reconoce contraseña!')
+    }
       const contraseñaHasheada = await bcrypt.hash(contraseña, 10);
       const nuevoUsuario = new modeloDeUsuario({
         email,
