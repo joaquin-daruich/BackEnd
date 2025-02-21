@@ -18,7 +18,7 @@ const conexionDB = async () => {
 conexionDB();
 
 app.use(express.urlencoded({ extended: true }));
-
+const cors = require('cors');
 const corsOptions = {
   origin: 'https://trabajo-wp.vercel.app',  // Cambia al puerto correcto de tu frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
