@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import { controladorDeRegistro } from './controladores/controladorDeRegistro';
 
 const app = express();
 
@@ -8,12 +9,12 @@ app.use(express.json({ limit: '0.2mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: 'https://trabajo-wp.vercel.app',  // Permite solicitudes de este dominio
+  origin: 'https://trabajo-wp.vercel.app',  
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
-app.use(cors(corsOptions));  // Usa CORS con la configuración adecuada
+app.use(cors(corsOptions)); 
 
 const PUERTO = 7000;
 
@@ -21,14 +22,8 @@ app.get('/', (req, res) => {
   res.send('holaaa');
 });
 
-app.post('/registrarse', (req, res) => {
-  const datosDelUsuario = {
-    email: req.body.email,
-    contraseña: req.body.contraseña,
-  };
-  res.json(datosDelUsuario);  // Respuesta en formato JSON
-});
+app.post('/registrarse', controladorDeRegistro);
 
 app.listen(PUERTO, () => {
-  console.log('holaaa');
+  console.log('puertoFuncionando');
 });
