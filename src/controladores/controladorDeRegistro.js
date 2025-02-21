@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt'
 import modeloDeUsuario from '../modelos/modeloDeUsuario.js'
 
  const conexionDB = async () => {
+ 
   try {
     await mongoose.connect('mongodb+srv://lemat:lemat2213@cluster0.xu4py.mongodb.net/trabajo-wp', {
       useNewUrlParser: true,
@@ -19,6 +20,7 @@ export const controladorDeRegistro = async (req, res) => {
     
 
     try {
+        console.log('medio trol')
         conexionDB();
     const { email, contraseña } = req.body;
     if(!email || !contraseña){
