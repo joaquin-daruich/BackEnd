@@ -7,7 +7,6 @@ const app = express();
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
-
 const corsOptions = {
     origin: '*',  
     methods: ['GET', 'POST', 'OPTIONS'], 
@@ -15,7 +14,6 @@ const corsOptions = {
   };
   
   app.use(cors(corsOptions)); 
-  app.options('*', cors(corsOptions));
 
 
 const PUERTO = process.env.PORT || 7000;
