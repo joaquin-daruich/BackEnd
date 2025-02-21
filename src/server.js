@@ -1,5 +1,4 @@
 import express from 'express'
-import statusRouter from './router.js';
 import mongoose from 'mongoose'
 import cors from 'cors'
 const app = express();
