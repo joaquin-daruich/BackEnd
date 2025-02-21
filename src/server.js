@@ -5,6 +5,20 @@ import { controladorDeRegistro } from './controladores/controladorDeRegistro.js'
 
 const app = express();
 
+const conexionDB = async () => {
+  try {
+    await mongoose.connect('mongodb+srv://lemat:lemat2213@cluster0.xu4py.mongodb.net/trabajo-wp', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('Conexión a la base de datos exitosa');
+  } catch (error) {
+    console.error('Error al conectar con la base de datos:', error);
+  }
+};
+
+conexionDB();
+
 
 app.use(express.json({ limit: '0.2mb' }));
 app.use(express.urlencoded({ extended: true }));
