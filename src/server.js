@@ -1,6 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';
+import cors from 'cors';  // Usamos import aquí en vez de require
 import { controladorDeRegistro } from './controladores/controladorDeRegistro.js';
 import ENVIROMENT from './configuraciones/enviroment.js';
 
@@ -18,7 +18,7 @@ const conexionDB = async () => {
 conexionDB();
 
 app.use(express.urlencoded({ extended: true }));
-const cors = require('cors');
+
 const corsOptions = {
   origin: 'https://trabajo-wp.vercel.app',  // Cambia al puerto correcto de tu frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -35,7 +35,6 @@ app.get('/', (req, res) => {
 });
 
 app.post('/registrarse', controladorDeRegistro);
-
 
 const puerto = process.env.PORT || 7000;  
 
