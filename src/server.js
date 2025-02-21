@@ -18,7 +18,7 @@ const corsOptions = {
   app.options('*', cors(corsOptions));
 
 
-const PUERTO = 7000;
+const PUERTO = process.env.PORT || 7000;
 
 app.get('/', (req, res) => {
   res.send('holaaa');

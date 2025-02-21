@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 import modeloDeUsuario from '../modelos/modeloDeUsuario.js'
 import mongoose from 'mongoose';
+import cors from 'cors';
 
  const conexionDB = async () => {
  
@@ -21,6 +22,15 @@ export const controladorDeRegistro = async (req, res) => {
     
 
     try {
+        const corsOptions = {
+            origin: '*',  
+            methods: ['GET', 'POST', 'OPTIONS'], 
+            allowedHeaders: ['Content-Type', 'Authorization', 'Origin'],  
+          };
+          
+          app.use(cors(corsOptions)); 
+          app.options('*', cors(corsOptions));
+        
         console.log('medio trol')
     const { email, password } = req.body;
    console.log(req.body)
