@@ -20,7 +20,7 @@ conexionDB();
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: 'http://localhost:5173',  // Cambia al puerto correcto de tu frontend
+  origin: 'https://trabajo-wp.vercel.app',  // Cambia al puerto correcto de tu frontend
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
   credentials: true,
