@@ -14,9 +14,7 @@ export const controladorDeRegistro = async (req, res) => {
       res.status(201).json(nuevoUsuario);  
     } catch (error) {
       console.error(error);
-      res.status(500).json({ message: 'Error en el servidor, por favor intenta más tarde.' + error ,
-        laContraseñaEs: contraseña ,
-        elEmailEs: email ,
+      res.status(500).json({ message: 'Error en el servidor, por favor intenta más tarde. El error es:' + error + ' La contraseña es:' + contraseña + ' El Email es:' + email
        });  
     }
   };
