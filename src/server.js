@@ -5,7 +5,15 @@ import { controladorDeRegistro } from './controladores/controladorDeRegistro.js'
 
 const app = express();
 app.use(express.json());
-
+const conexionDB = async () => {
+    try {
+      await mongoose.connect('mongodb+srv://lemat:lemat2213@cluster0.xu4py.mongodb.net/trabajo-wp');
+      console.log('Conexión a la base de datos exitosa');
+    } catch (error) {
+      console.error('Error al conectar con la base de datos:', error);
+    }
+  };
+  await conexionDB();
 app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
     origin: '*',  

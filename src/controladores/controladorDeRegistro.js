@@ -2,14 +2,7 @@ import bcrypt from 'bcrypt'
 import modeloDeUsuario from '../modelos/modeloDeUsuario.js'
 import mongoose from 'mongoose';
 import express from 'express'
-// const conexionDB = async () => {
-//     try {
-//       await mongoose.connect('mongodb+srv://lemat:lemat2213@cluster0.xu4py.mongodb.net/trabajo-wp');
-//       console.log('Conexión a la base de datos exitosa');
-//     } catch (error) {
-//       console.error('Error al conectar con la base de datos:', error);
-//     }
-//   };
+
 
 
 const app = express();
@@ -34,7 +27,7 @@ export const controladorDeRegistro = async (req, res) => {
         contraseña: contraseñaHasheada,
         emailVerify: false
       });
-    //   await conexionDB();
+     
       await nuevoUsuario.save();
       res.status(201).json(nuevoUsuario);  
     } catch (error) {
