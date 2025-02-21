@@ -23,7 +23,7 @@ const corsOptions = {
   
   app.post('/registrarse', (req, res) => {
    
-    res.json(req.body);
+    res.json(req.body.email , req.body.password);
   });
 
 app.use('/api/status' , statusRouter)
