@@ -13,7 +13,7 @@ const conexionDB = async () => {
       console.error('Error al conectar con la base de datos:', error);
     }
   };
-  await conexionDB();
+  conexionDB();
 app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
     origin: '*',  
