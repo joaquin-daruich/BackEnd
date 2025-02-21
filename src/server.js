@@ -9,7 +9,7 @@ app.use(express.json({ limit: '0.2mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: 'https://trabajo-wp.vercel.app',  
+  origin: '*',  
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
