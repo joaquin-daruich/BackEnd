@@ -14,6 +14,10 @@ export const controladorDeRegistro = async (req, res) => {
 
         
     const { email, password } = req.body;
+    const emailExistente = await modeloDeUsuario.findOne({ email });
+    if (emailExistente) {
+      return res.status(400).json({ message: 'El correo electrónico ya está registrado' });
+    }
    console.log(req.body)
     if(!email || !password){
         console.log(email)
