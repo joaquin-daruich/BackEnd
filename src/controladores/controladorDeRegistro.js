@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt'
 import modeloDeUsuario from '../modelos/modeloDeUsuario.js'
+import mongoose from 'mongoose';
 
  const conexionDB = async () => {
  
@@ -21,20 +22,21 @@ export const controladorDeRegistro = async (req, res) => {
 
     try {
         console.log('medio trol')
-        conexionDB();
-    const { email, contraseña } = req.body;
-    if(!email || !contraseña){
+    const { email, password } = req.body;
+   console.log(req.body)
+    if(!email || !password){
         console.log(email)
-        console.log(contraseña)
+        console.log(password)
         res.json('no reconoce email! o contraseña!!!!')
     }
   
-      const contraseñaHasheada = await bcrypt.hash(contraseña, 10);
+      const contraseñaHasheada = await bcrypt.hash(password, 10);
       const nuevoUsuario = new modeloDeUsuario({
         email,
         contraseña: contraseñaHasheada,
         emailVerify: false
       });
+      await conexionDB();
       await nuevoUsuario.save();
       res.status(201).json(nuevoUsuario);  
     } catch (error) {
