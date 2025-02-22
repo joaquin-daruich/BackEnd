@@ -134,7 +134,7 @@ console.error(error)
      })
      .build()
      return res.json(response)}
-     const token = jwt.sign({email: user.email, id: user.id , role: user.role} , ENVIROMENT.JWT_SECRET , {expiresIn: '1d'})
+     const token = jwt.sign({email: usuario.email, id: usuario.id } , ENVIROMENT.JWT_SECRET , {expiresIn: '1d'})
      const response = new ResponseBuilder()
      .setOk(true)
      .setStatus(200)
