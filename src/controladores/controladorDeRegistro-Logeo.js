@@ -5,6 +5,7 @@ import express from 'express'
 import ENVIROMENT from '../configuraciones/enviroment.js';
 import { mandarMail } from '../utils/mandarMail.js';
 import jwt from 'jsonwebtoken'
+import { ResponseBuilder } from '../builders/responseBuilder.js';
 
 
 
@@ -74,7 +75,7 @@ export const controladorDeRegistro = async (req, res) => {
             return res.json(response)
         }
         const decoded = jwt.verify(tokenDeVerificacion, ENVIROMENT.JWT_SECRET)
-        const usuario = await userModel.findOne({email: decoded.email})
+        const usuario = await modeloDeUsuario.findOne({email: decoded.email})
         if(!usuario){
 
         }
@@ -84,7 +85,7 @@ export const controladorDeRegistro = async (req, res) => {
 
          usuario.emailVerify = true
 
-        await user.save()
+        await usuario.save()
         const response = new ResponseBuilder()
         .setOk(true)
         .setMessage('Email verificado con Exito!!!')
