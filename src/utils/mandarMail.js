@@ -1,4 +1,6 @@
-import transporter from "../../config/transporter.config.js"
+import { transporter } from "../configuraciones/transporte.config.js"
+
+
 export const mandarMail = async (opciones) => {
     try{
     let respuesta = await transporter.mandarMail(opciones)
