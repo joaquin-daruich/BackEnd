@@ -75,15 +75,11 @@ export const controladorDeRegistro = async (req, res) => {
             return res.json(response)
         }
         const decoded = jwt.verify(tokenDeVerificacion, ENVIROMENT.JWT_SECRET)
+        
         const usuario = await modeloDeUsuario.findOne({email: decoded.email})
-        if(!usuario){
+        console.log(usuario)
 
-        }
-        if(usuario.emailVerify){
-            
-        }
-
-         usuario.emailVerify = true
+         usuario.verificacionDeEmail = true
 
         await usuario.save()
         const response = new ResponseBuilder()
