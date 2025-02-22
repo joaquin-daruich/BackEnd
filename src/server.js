@@ -29,7 +29,7 @@ app.post('/registrarse', controladorDeRegistro);
 app.post('/logearse', controladorDeLogeo);
 app.post('/olvidarContrasena' , controladorDeOlvidasteLaContrasena)
 app.post('/nuevaContrasena' , nuevaContrasena)
-app.get('verificarEmail/:tokenDeVerificacion' , verificarElTokenDeEmail)
+app.get('/verificarEmail/:tokenDeVerificacion' , verificarElTokenDeEmail)
 
 const puerto = process.env.PORT || 7000;  
 
