@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';  // Usamos import aquí en vez de require
-import { controladorDeRegistro } from './controladores/controladorDeRegistro.js';
+import cors from 'cors'; 
+import { controladorDeLogeo, controladorDeOlvidasteLaContrasena, controladorDeRegistro, nuevaContrasena, verificarElTokenDeEmail } from './controladores/controladorDeRegistro-Logeo.js';
 import ENVIROMENT from './configuraciones/enviroment.js';
 
 const app = express();
@@ -19,22 +19,17 @@ conexionDB();
 
 app.use(express.urlencoded({ extended: true }));
 
-const corsOptions = {
-  origin: '*',  // Cambia al puerto correcto de tu frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
-  credentials: true,
-  preflightContinue: false,
-  optionsSuccessStatus: 204,
-};
-app.options('*', cors(corsOptions));
-app.use(cors(corsOptions));
+app.use(cors());  
 
 app.get('/', (req, res) => {
   res.send('holaaa');
 });
 
 app.post('/registrarse', controladorDeRegistro);
+app.post('/logearse', controladorDeLogeo);
+app.post('/olvidarContrasena' , controladorDeOlvidasteLaContrasena)
+app.post('/nuevaContrasena' , nuevaContrasena)
+app.get('verificarEmail/:tokenDeVerificacion' , verificarElTokenDeEmail)
 
 const puerto = process.env.PORT || 7000;  
 
