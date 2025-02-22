@@ -39,7 +39,7 @@ export const controladorDeRegistro = async (req, res) => {
         contraseña: contraseñaHasheada,
         emailVerify: false
       });
-      await sendEmail({
+      await mandarMail({
         to: email,
         subject: 'Valida tu correo electronico!',
         html: `

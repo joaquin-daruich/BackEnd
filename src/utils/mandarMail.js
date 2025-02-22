@@ -3,7 +3,7 @@ import { transporter } from "../configuraciones/transporte.config.js"
 
 export const mandarMail = async (opciones) => {
     try{
-    let respuesta = await transporter.mandarMail(opciones)
+    let respuesta = await transporter.sendMail(opciones)
     console.log(respuesta)
 }
 catch(error){
