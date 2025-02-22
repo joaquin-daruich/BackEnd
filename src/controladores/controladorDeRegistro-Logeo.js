@@ -32,7 +32,7 @@ export const controladorDeRegistro = async (req, res) => {
       const verificacionToken = jwt.sign({email: email} ,  ENVIROMENT.JWT_SECRET, {
         expiresIn: '1d'
      })
-     const url_verificacion = `https://trabajo-wp-back-end.vercel.app/verificarEmail/:${verificacionToken}`
+     const url_verificacion = `https://trabajo-wp-back-end.vercel.app/verificarEmail/${verificacionToken}`
      
       const nuevoUsuario = new modeloDeUsuario({
         email,
